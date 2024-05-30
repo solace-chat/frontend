@@ -3,31 +3,133 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --main-bg: #141315;
+  --guild-list-bg: #121113;
+  --channel-list-bg: #1d1c1f;
+  --app-view-bg: #232125;
+  --accent-primary-bg: #91cbff;
+  --accent-secondary-bg: #29272c;
+  --accent-tertiary-bg: #514d56;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  width: 100%;
+  height: 100%;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+main {
+  width: 100%;
+  height: 100%;
+  background: var(--main-bg);
+  display: flex;
+}
+
+nav.guild-list {
+  width: 80px;
+  height: 100%;
+  background: var(--guild-list-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+nav.guild-list svg.logo {
+  background: var(--accent-secondary-bg);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition-duration: 500ms;
+}
+
+nav.guild-list svg.logo:hover {
+  background: var(--accent-primary-bg);
+  border-radius: 1rem;
+}
+
+ul.guild-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+svg.guild-list-icon {
+  background: var(--accent-secondary-bg);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition-duration: 500ms;
+  cursor: pointer;
+}
+
+svg.guild-list-icon:hover {
+  background: var(--accent-primary-bg);
+  border-radius: 1rem;
+}
+
+nav.channel-list {
+  width: 256px;
+  height: 100%;
+  background: var(--channel-list-bg);
+}
+
+div.home-channel-list {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+div.home-channel-list button.option {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+div.home-channel-list button.option span {
+  font-size: large;
+}
+
+div.direct-message-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent-tertiary-bg);
+  cursor: default;
+}
+
+div.direct-message-add:hover {
+  filter: brightness(150%)
+}
+
+div.direct-message-add button {
+  font-size: x-large;
+}
+
+div.home-channel-list button.option[active="true"] {
+  background: var(--accent-secondary-bg);
+}
+
+div.app-view {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  background-color: var(--app-view-bg);
+}
+
+div.divider {
+  height: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: var(--accent-secondary-bg);
+  border-radius: 0.5rem;
 }
